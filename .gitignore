@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Streamlit
+.streamlit/
+
+# Gmail tokens & secrets
+token*.json
+credentials*.json
+credentials/
+tokens/
+# Environment variables
+.env
+
+# Vector DB / embeddings
+*.npy
+*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# HuggingFace model cache
+models/
+
+# VS Code
+.vscode/
