@@ -4,16 +4,31 @@ from llm.groq_client import client
 def generate_email_reply(context, instruction):
 
     prompt = f"""
-You are an AI email assistant.
+You are an AI email drafting assistant.
 
-EMAIL:
+The user wants to SEND an email to another person.
+
+Original email/context:
 {context}
 
-USER INSTRUCTION:
+What the user wants to say:
 {instruction}
 
-Write a professional email reply.
-Only return the email body.
+Your task:
+- Write the actual email that should be sent
+- Do NOT respond as an assistant
+- Do NOT explain anything
+- Do NOT give suggestions
+- Do NOT analyze
+- Do NOT say "I reviewed"
+- ONLY generate the outgoing email body
+
+The email should:
+- sound human
+- be concise
+- be professional
+- start with a greeting
+- end with a sign off
 """
 
     response = client.chat.completions.create(
@@ -27,4 +42,4 @@ Only return the email body.
         max_tokens=500
     )
 
-    return response.choices[0].message.content
+    return response.choices[0].message.content.strip()
